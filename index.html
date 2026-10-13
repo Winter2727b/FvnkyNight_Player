@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="FVNKY NIGHT — personal music library and player.">
+  <title>Muzik — FVNKY NIGHT</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="library.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#library" data-view-link="library" aria-label="Muzik home">
+        <span class="brand-copy"><strong>Muzik</strong></span>
+      </a>
+      <div class="topbar-right">
+        <button class="icon-button" type="button" id="search-toggle" aria-label="Cari lagu" title="Cari lagu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        </button>
+        <button class="icon-button" type="button" id="library-menu-button" aria-label="Buka senarai lagu" title="Senarai lagu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.2" fill="currentColor" stroke="none"></circle><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"></circle><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+        </button>
+      </div>
+      <nav class="main-nav" aria-label="Kategori muzik">
+        <button class="nav-item" type="button" data-library-tab="playlist">Senarai</button>
+        <button class="nav-item active" type="button" data-library-tab="songs" aria-current="page">Lagu</button>
+        <button class="nav-item" type="button" data-library-tab="artists">Artis</button>
+        <button class="nav-item" type="button" data-library-tab="albums">Album</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="screen library-screen active" id="library-screen" aria-labelledby="library-heading">
+        <div class="library-intro">
+          <div class="intro-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE NIGHT SHIFT COLLECTION</p>
+            <h1 id="library-heading">Music for<br><em>after dark.</em></h1>
+            <p class="intro-description">Semua beat kegemaran anda, satu tempat. Pilih track dan biarkan malam berjalan.</p>
+            <div class="intro-stats">
+              <div><strong id="song-count">03</strong><span>TRACKS</span></div>
+              <span class="stat-divider"></span>
+              <div><strong>∞</strong><span>REPEAT THE NIGHT</span></div>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="FVNKY NIGHT after hours artwork">
+            <div class="hero-art-grid"></div>
+            <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
+            <span class="hero-art-label">FNK / 001</span>
+            <div class="hero-art-title">FVNKY<br><span>NIGHT</span></div>
+            <div class="hero-art-bottom"><span>LOW LIGHTS.</span><span>LOUD FEELINGS.</span></div>
+            <div class="hero-stamp">PLAY<br>LOUD</div>
+          </div>
+        </div>
+
+        <section class="library-panel" aria-label="Song library">
+          <div class="library-toolbar">
+            <div class="section-title-wrap">
+              <p class="eyebrow">YOUR COLLECTION</p>
+              <h2>All tracks <span class="track-count" id="visible-count">03</span></h2>
+            </div>
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+              <input id="search-input" type="search" placeholder="Cari lagu atau artis..." autocomplete="off" aria-label="Cari lagu atau artis">
+              <kbd>/</kbd>
+            </label>
+          </div>
+
+          <div class="filter-row" role="group" aria-label="Tapis library">
+            <button class="filter-chip active" type="button" data-filter="all">All tracks</button>
+            <button class="filter-chip" type="button" data-filter="fvnky">Fvnky</button>
+            <button class="filter-chip" type="button" data-filter="slow">Slow</button>
+            <button class="filter-chip" type="button" data-filter="favorites"><span class="tiny-heart">♡</span> Favorites</button>
+            <span class="filter-spacer"></span>
+            <span class="sort-label"><span class="sort-bars">≡</span> YOUR MIX</span>
+          </div>
+
+          <div class="track-table-head" aria-hidden="true"><span>#</span><span>TRACK / ARTIST</span><span>GENRE</span><span>DURATION</span><span></span></div>
+          <div class="track-list" id="track-list" aria-live="polite"></div>
+          <nav class="alphabet-index" id="alphabet-index" aria-label="Lompat ke huruf lagu">
+            <button type="button" data-letter="#">#</button>
+            <button type="button" data-letter="A">A</button><button type="button" data-letter="B">B</button>
+            <button type="button" data-letter="C">C</button><button type="button" data-letter="D">D</button>
+            <button type="button" data-letter="E">E</button><button type="button" data-letter="F">F</button>
+            <button type="button" data-letter="G">G</button><button type="button" data-letter="H">H</button>
+            <button type="button" data-letter="I">I</button><button type="button" data-letter="J">J</button>
+            <button type="button" data-letter="K">K</button><button type="button" data-letter="L">L</button>
+            <button type="button" data-letter="M">M</button><button type="button" data-letter="N">N</button>
+            <button type="button" data-letter="O">O</button><button type="button" data-letter="P">P</button>
+            <button type="button" data-letter="Q">Q</button><button type="button" data-letter="R">R</button>
+            <button type="button" data-letter="S">S</button><button type="button" data-letter="T">T</button>
+            <button type="button" data-letter="U">U</button><button type="button" data-letter="V">V</button>
+            <button type="button" data-letter="W">W</button><button type="button" data-letter="X">X</button>
+            <button type="button" data-letter="Y">Y</button><button type="button" data-letter="Z">Z</button>
+          </nav>
+          <div class="empty-state" id="empty-state" hidden>
+            <div class="empty-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
+            <h3>Belum jumpa track</h3>
+            <p>Cuba carian lain, atau tambah lagu anda ke <code>music/</code> dan senaraikannya dalam <code>library.js</code>.</p>
+            <button class="text-button" type="button" id="clear-search">Clear search <span>↗</span></button>
+          </div>
+          <div class="library-footnote"><span class="footnote-pulse"></span> MADE FOR LATE NIGHTS <span class="footnote-separator">/</span> FVNKY NIGHT PLAYER</div>
+        </section>
+      </section>
+
+      <section class="screen player-screen" id="player-screen" aria-labelledby="player-heading" hidden>
+        <div class="player-topline">
+          <button type="button" class="back-button" id="back-to-library" aria-label="Kembali ke library" title="Kembali ke library"><span aria-hidden="true">▼</span></button>
+          <div class="playing-label">NOW PLAYING</div>
+          <button class="icon-button queue-top-button" id="queue-top-button" type="button" aria-label="Open queue" title="Queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h11M4 11h11M4 16h7M17 15l3 3 3-3M20 18V5"></path></svg></button>
+        </div>
+
+        <div class="player-layout">
+          <div class="player-art-column">
+            <div class="record-shadow"></div>
+            <div class="large-cover cover-violet" id="player-cover" aria-label="Music note artwork">
+              <div class="cover-main-type" aria-hidden="true">♪</div>
+            </div>
+            <div class="cover-caption"><span class="caption-dot"></span><span>AN AUDIO EXPERIENCE</span><span class="caption-line"></span></div>
+          </div>
+
+          <div class="player-details">
+            <p class="eyebrow"><span class="eyebrow-line"></span> CURRENTLY SPINNING</p>
+            <div class="now-title-group">
+              <h1 id="player-heading">Choose your<br><em>soundtrack.</em></h1>
+              <p id="player-artist" class="player-artist">FVNKY NIGHT PLAYER</p>
+            </div>
+            <div class="player-tags"><span id="player-genre" class="genre-tag">READY WHEN YOU ARE</span><span class="lossless-tag"><span>✳</span> YOUR OWN LIBRARY</span></div>
+
+            <div class="timeline-wrap">
+              <input type="range" id="seek-slider" class="range-slider seek-slider" min="0" max="100" value="0" step="0.1" aria-label="Song progress">
+              <div class="time-labels"><span id="current-time">00:00</span><span id="duration-time">00:00</span></div>
+            </div>
+
+            <div class="main-controls">
+              <button class="control-button secondary-control repeat-control" id="repeat-button" type="button" aria-label="Repeat off" title="Repeat: off"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"></path></svg><span class="repeat-one-mark" id="repeat-one-mark">1</span></button>
+              <button class="control-button skip-control" id="previous-button" type="button" aria-label="Previous track" title="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M20 5 8 12l12 7z" fill="currentColor" stroke="none"></path></svg></button>
+              <button class="play-button" id="play-button" type="button" aria-label="Play" title="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"></path></svg></button>
+              <button class="control-button skip-control" id="next-button" type="button" aria-label="Next track" title="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M4 5l12 7-12 7z" fill="currentColor" stroke="none"></path></svg></button>
+              <button class="control-button secondary-control" id="queue-button" type="button" aria-label="View queue" title="View queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 11h16M4 16h10M17 14v7l4-2.5-4-2.5"></path></svg></button>
+            </div>
+
+            <div class="player-utility-row">
+              <button class="utility-button" type="button" id="favorite-button" aria-label="Add to favorites" title="Add to favorites"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"></path></svg><span id="favorite-label">ADD TO FAVORITES</span></button>
+              <button class="utility-button" type="button" id="shuffle-button" aria-label="Shuffle" title="Shuffle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M4 4l5 5M14 14l7 7"></path></svg><span>SHUFFLE</span></button>
+              <button class="utility-button" type="button" id="share-button" aria-label="Share current song" title="Share current song"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.7 6.6-4.2M8.7 13.3l6.6 4.2"></path></svg><span>SHARE</span></button>
+              <button class="utility-button more-utility-button" type="button" id="more-player-button" aria-label="More options" title="More options"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="19" cy="12" r="1.4" fill="currentColor" stroke="none"></circle></svg><span>MORE</span></button>
+              <label class="volume-control" aria-label="Volume"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4ZM17 9a5 5 0 0 1 0 6M19 6a9 9 0 0 1 0 12"></path></svg><input type="range" id="volume-slider" class="range-slider volume-slider" min="0" max="1" value="0.8" step="0.01" aria-label="Volume"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-footer"><span><b>01</b> / SOUND IS A FEELING</span><span>KEEP IT FVNKY <i>✳</i></span></div>
+      </section>
+    </main>
+
+    <div class="mini-player" id="mini-player" hidden>
+      <button class="mini-track-info" type="button" data-view-link="player" aria-label="Open now playing">
+        <span class="mini-cover cover-violet" id="mini-cover"><span>FNK</span></span>
+        <span class="mini-copy"><strong id="mini-title">Choose a track</strong><small id="mini-artist">FVNKY NIGHT</small></span>
+      </button>
+      <div class="mini-progress"><span id="mini-progress-fill"></span></div>
+      <div class="mini-controls">
+        <button class="mini-icon-button" id="mini-play-button" type="button" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"></path></svg></button>
+        <button class="mini-icon-button" id="mini-next-button" type="button" aria-label="Next track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M4 5l12 7-12 7z" fill="currentColor" stroke="none"></path></svg></button>
+        <button class="mini-icon-button queue-mini-button" id="mini-queue-button" type="button" aria-label="Open queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 11h16M4 16h10M18 14v7l4-3.5z"></path></svg></button>
+      </div>
+    </div>
+
+    <div class="queue-backdrop" id="queue-backdrop" hidden>
+      <section class="queue-panel" role="dialog" aria-modal="true" aria-labelledby="queue-heading">
+        <div class="queue-header"><div><p class="eyebrow">YOUR NIGHT, YOUR ORDER</p><h2 id="queue-heading">Up next <span id="queue-count">03</span></h2></div><button class="icon-button" id="close-queue-button" type="button" aria-label="Close queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
+        <div class="queue-list" id="queue-list"></div>
+        <p class="queue-note">Pilih mana-mana track untuk mula mendengar.</p>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer class="site-footer"><span>FVNKY NIGHT © <span id="year"></span></span><span>MADE FOR YOUR HEADPHONES <b>✳</b></span></footer>
+  </div>
+</body>
+</html>
